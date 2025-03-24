@@ -1,0 +1,22 @@
+{{>layout/header}}
+
+<!--마진 : mt, mr, ml, mb (1~5) ex) mt-5-->
+<div class="container mt-2">
+    <div class="mt-4 p-5 bg-light text-dark rounded-4">
+        <h1>계좌생성 페이지</h1>
+        <form action="/account/save" method="post">
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="Enter number" name="number">
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" placeholder="Enter password" name="password">
+            </div>
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="Enter balance" name="balance">
+            </div>
+            <button type="submit" class="btn btn-primary">계좌생성</button>
+        </form>
+    </div>
+</div>
+
+{{>layout/footer}}
