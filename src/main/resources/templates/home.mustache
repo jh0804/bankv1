@@ -4,6 +4,11 @@
 <div class="container mt-2">
     <div class="mt-4 p-5 bg-light text-dark rounded-4">
         <h1>은행에 오신 것을 환영합니다.</h1>
+        <h3>
+            {{#sessionUser}}
+                {{sessionUser.fullname}}님
+            {{/sessionUser}}
+        </h3>
     </div>
 </div>
 
