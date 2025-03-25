@@ -10,14 +10,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1111</td>
-            <td>1000원</td>
-        </tr>
-        <tr>
-            <td>2222</td>
-            <td>1000원</td>
-        </tr>
+        {{#models}}
+            <tr>
+                <td>{{number}}</td>
+                <td>{{balance}}원</td>
+            </tr>
+        {{/models}}
         </tbody>
     </table>
 </div>
