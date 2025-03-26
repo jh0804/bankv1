@@ -4,7 +4,7 @@
 <div class="container mt-2">
     <div class="mt-4 p-5 bg-light text-dark rounded-4">
         <h1>계좌이체 페이지</h1>
-        <form action="#" method="post">
+        <form action="/account/transfer" method="post">
             <div class="mb-3 mt-3">
                 <input type="text" class="form-control" placeholder="Enter amount" name="amount">
             </div>
@@ -15,7 +15,8 @@
                 <input type="text" class="form-control" placeholder="Enter depositNumber" name="depositNumber">
             </div>
             <div class="mb-3 mt-3">
-                <input type="text" class="form-control" placeholder="Enter withdrawPassword" name="withdrawPassword">
+                <input type="password" class="form-control" placeholder="Enter withdrawPassword"
+                       name="withdrawPassword">
             </div>
             <button type="submit" class="btn btn-primary">이체하기</button>
         </form>

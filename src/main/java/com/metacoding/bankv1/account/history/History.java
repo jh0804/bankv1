@@ -1,4 +1,4 @@
-package com.metacoding.bankv1.history;
+package com.metacoding.bankv1.account.history;
 
 import jakarta.persistence.*;
 import lombok.Getter;
