@@ -6,7 +6,9 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -16,6 +18,18 @@ public class AccountController {
 
     private final AccountService accountService;
     private final HttpSession session; // IoC 컨테이너에 들어있는 session DI
+
+    // /account/1111?type=입금 (pk,unique는 주소/ 뒤에 붙이고 나머지는 QueryString으로 받는다)
+    @GetMapping("/account/{number}")
+    public String detail(@PathVariable("number") int number, @RequestParam(value = "type", required = false, defaultValue = "전체") String type) {
+        // 인증
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if (sessionUser == null) throw new RuntimeException("로그인 후 사용해주세요"); // 로그인X시 아예 못들어오도록
+
+        accountService.계좌상세보기(number, type, sessionUser.getId()); // sessionUser.getId() : 권한 체크
+        // System.out.println("number = " + number + ", type = " + type);
+        return "account/detail";
+    }
 
     @PostMapping("/account/transfer")
     public String transfer(AccountRequest.TransferDTO transferDTO) {

@@ -19,5 +19,6 @@ public class History { // 어느 계좌가 어느 계좌에게
     private Integer depositNumber; // 2222 (FK)
     private Integer amount; // 100원
     private Integer withdrawBalance; // 900원 이체되는 그 시점의 잔액 의미
+    private Integer depositBalance;
     private Timestamp createdAt;
 }

@@ -10,10 +10,10 @@ values (2222, '1234', 1100, 1, now());
 insert into account_tb(number, password, balance, user_id, created_at)
 values (3333, '1234', 1000, 2, now());
 
-insert into history_tb(withdraw_number, deposit_number, amount, withdraw_balance, created_at)
-values (1111, 2222, 100, 900, now());
-insert into history_tb(withdraw_number, deposit_number, amount, withdraw_balance, created_at)
-values (1111, 3333, 100, 800, now());
-insert into history_tb(withdraw_number, deposit_number, amount, withdraw_balance, created_at)
-values (3333, 1111, 100, 1000, now());
+insert into history_tb(withdraw_number, deposit_number, amount, withdraw_balance, deposit_balance, created_at)
+values (1111, 2222, 100, 900, 1100, now());
+insert into history_tb(withdraw_number, deposit_number, amount, withdraw_balance, deposit_balance, created_at)
+values (1111, 3333, 100, 800, 1100, now());
+insert into history_tb(withdraw_number, deposit_number, amount, withdraw_balance, deposit_balance, created_at)
+values (3333, 1111, 100, 1000, 900, now());
 

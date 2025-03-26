@@ -60,6 +60,19 @@ public class AccountService {
 
         // 7. History Save (핵심 로직)
         // transferDTO.get~()을 써도 된다 (이미 검증되었기 때문에)
-        historyRepository.save(transferDTO.getWithdrawNumber(), transferDTO.getDepositNumber(), transferDTO.getAmount(), withdrawBalance);
+        historyRepository.save(transferDTO.getWithdrawNumber(), transferDTO.getDepositNumber(), transferDTO.getAmount(), withdrawBalance, depositBalance);
+    }
+
+    public void 계좌상세보기(int number, String type, Integer sessionUserId) {
+        // 1. 계좌 존재 확인
+        Account account = accountRepository.findByNumber(number);
+        if (account == null) throw new RuntimeException("계좌가 존재하지 않습니다.");
+
+        // 2. 계좌 주인 확인
+        if (!(account.getUserId().equals(sessionUserId))) {
+            throw new RuntimeException("해당 계좌에 대한 권한이 없습니다.");
+        }
+
+        // 3. 조회해서 주기
     }
 }
