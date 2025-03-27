@@ -4,15 +4,16 @@
 <div class="container mt-2">
 
     <div class="mt-4 p-5 bg-light text-dark rounded-4">
-        <p>쌀님 계좌</p>
-        <p>계좌번호 : 1111</p>
-        <p>계좌잔액 : 1000원</p>
-    </div>
+        <p>{{models.0.accountOwner}}님 계좌</p>
+        <p>계좌번호 : {{models.0.accountNumber}}</p>
+        <p>계좌잔액 : {{models.0.balance}}원</p>
 
+    </div>
+    
     <div class="mt-3 mb-3">
-        <button type="button" class="btn btn-outline-primary">전체</button>
-        <button type="button" class="btn btn-outline-primary">입금</button>
-        <button type="button" class="btn btn-outline-primary">출금</button>
+        <a href="/account/{{models.0.accountNumber}}?type=전체" class="btn btn-outline-primary">전체</a>
+        <a href="/account/{{models.0.accountNumber}}?type=입금" class="btn btn-outline-primary">입금</a>
+        <a href="/account/{{models.0.accountNumber}}?type=출금" class="btn btn-outline-primary">출금</a>
     </div>
 
     <table class="table table-hover">
@@ -27,22 +28,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>2025.03.24 : 10:00</td>
-            <td>1111</td>
-            <td>2222</td>
-            <td>100원</td>
-            <td>1000원</td>
-            <td>출금</td>
-        </tr>
-        <tr>
-            <td>2025.03.23 : 10:00</td>
-            <td>2222</td>
-            <td>1111</td>
-            <td>100원</td>
-            <td>1100원</td>
-            <td>입금</td>
-        </tr>
+        {{#models}}
+            <tr>
+                <td>{{createdAt}}</td>
+                <td>{{wNumber}}</td>
+                <td>{{dNumber}}</td>
+                <td>{{amount}}원</td>
+                <td>{{balance}}원</td>
+                <td>{{type}}</td>
+            </tr>
+        {{/models}}
         </tbody>
     </table>
 </div>

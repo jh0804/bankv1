@@ -21,12 +21,14 @@ public class AccountController {
 
     // /account/1111?type=입금 (pk,unique는 주소/ 뒤에 붙이고 나머지는 QueryString으로 받는다)
     @GetMapping("/account/{number}")
-    public String detail(@PathVariable("number") int number, @RequestParam(value = "type", required = false, defaultValue = "전체") String type) {
+    public String detail(@PathVariable("number") int number, @RequestParam(value = "type", required = false, defaultValue = "전체") String type,
+                         HttpServletRequest request) {
         // 인증
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) throw new RuntimeException("로그인 후 사용해주세요"); // 로그인X시 아예 못들어오도록
 
-        accountService.계좌상세보기(number, type, sessionUser.getId()); // sessionUser.getId() : 권한 체크
+        List<AccountResponse.DetailDTO> detailList = accountService.계좌상세보기(number, type, sessionUser.getId()); // sessionUser.getId() : 권한 체크
+        request.setAttribute("models", detailList);
         // System.out.println("number = " + number + ", type = " + type);
         return "account/detail";
     }
